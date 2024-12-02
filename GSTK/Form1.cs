@@ -47,7 +47,7 @@ namespace GSTK
         {
             if(r == null)
             {
-                MessageBox.Show("Mohon pilih baris data yang akan diedit", "Good", MessageBoxButtons.OK, MessageBoxIcon.Information) return;
+                MessageBox.Show("Mohon pilih baris data yang akan diedit", "Good", MessageBoxButtons.OK, MessageBoxIcon.Information); return;
             }
             try
             {
@@ -73,10 +73,20 @@ namespace GSTK
         {
             if (r == null)
             {
-                MessageBox.Show("Mohon pilih baris data yang akan dihapus", "Good", MessageBoxButtons.OK, MessageBoxIcon.Information) return;
+                MessageBox.Show("Mohon pilih baris data yang akan dihapus", "Good", MessageBoxButtons.OK, MessageBoxIcon.Information); return;
             }
             try
             {
+                conn.Open();
+                sql = @"select * from st_update(_nama, _departemen)";
+                cmd = new NpgsqlCommand cmd;
+                if((int)cmd.ExecuteScalar() == 1)
+                {
+                    MessageBox.Show("Data berhasil dihapus", "Well Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    conn.Close();
+
+                }
+
 
             }
         }
